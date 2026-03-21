@@ -1,0 +1,8 @@
+# Environment variables
+.env
+
+# WordPress data (host mount)
+wp_data/
+
+# Database data (host mount)
+db_data/

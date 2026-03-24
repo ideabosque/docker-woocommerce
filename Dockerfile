@@ -63,6 +63,9 @@ COPY supervisor/*.ini /etc/supervisord.d/
 RUN echo '*/5 * * * * apache /usr/bin/php /var/www/html/wp-cron.php > /dev/null 2>&1' > /etc/cron.d/wp-cron && \
     chmod 0644 /etc/cron.d/wp-cron
 
+# Must-use plugins (copied into wp-content/mu-plugins by entrypoint)
+COPY mu-plugins/ /docker-mu-plugins/
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 

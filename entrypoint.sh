@@ -82,6 +82,13 @@ RewriteRule . /index.php [L]
 HTACCESS
 fi
 
+# Install must-use plugins
+if [ -d /docker-mu-plugins ] && [ "$(ls -A /docker-mu-plugins 2>/dev/null)" ]; then
+    mkdir -p /var/www/html/wp-content/mu-plugins
+    cp -n /docker-mu-plugins/*.php /var/www/html/wp-content/mu-plugins/
+    echo "Must-use plugins installed."
+fi
+
 # Ensure correct ownership
 chown -R apache:apache /var/www/html
 
